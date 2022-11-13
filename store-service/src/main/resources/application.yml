@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ge-store
+    username: postgres
+    password: postgres
+server:
+  port: 8083

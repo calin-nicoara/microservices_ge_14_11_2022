@@ -3,5 +3,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/ge-inventory
     username: postgres
     password: postgres
+  application:
+    name: inventory-service
 server:
   port: 8082

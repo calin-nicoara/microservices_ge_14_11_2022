@@ -3,6 +3,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/ge-store
     username: postgres
     password: postgres
+  application:
+    name: store-service
 server:
   port: 8083
 feign:

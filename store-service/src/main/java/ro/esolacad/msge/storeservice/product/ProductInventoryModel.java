@@ -9,13 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductModel {
+public class ProductInventoryModel {
 
-    private Long id;
-    private String code;
-    private String name;
-    private String description;
-    private String categoryName;
-    private String categoryCode;
+    private String productCode;
     private Integer stock;
 }

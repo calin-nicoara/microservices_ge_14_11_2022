@@ -5,3 +5,6 @@ spring:
     password: postgres
 server:
   port: 8083
+feign:
+  circuitbreaker:
+    enabled: true

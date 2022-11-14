@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: optional:configserver:http://localhost:8888
   datasource:
     url: jdbc:postgresql://localhost:5432/ge-store
     username: postgres
@@ -10,3 +12,8 @@ server:
 feign:
   circuitbreaker:
     enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh

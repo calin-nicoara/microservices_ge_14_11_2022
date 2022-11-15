@@ -7,15 +7,22 @@ spring:
     name: inventory-service
   cloud:
     function:
-      definition: storeproduct
+      definition: storeproduct;shopOrder;orderStock
     stream:
       kafka:
         binder:
           brokers: localhost:9092
       bindings:
+#        default:
+#          group: INVENTORY_SERVICE_GROUP
         storeproduct-in-0:
           destination: PRODUCT_TOPIC
           group: INVENTORY_SERVICE_GROUP
+        shopOrder-in-0:
+          destination: SHOP_ORDER
+          group: INVENTORY_SERVICE_GROUP
+        orderStock-out-0:
+          destination: SHOP_ORDER_STOCK
 #  kafka:
 #    consumer:
 #      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer

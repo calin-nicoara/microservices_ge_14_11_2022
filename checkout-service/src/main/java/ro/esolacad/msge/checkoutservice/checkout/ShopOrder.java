@@ -30,6 +30,6 @@ public class ShopOrder {
     private BigDecimal totalValueWithTax;
 
     public enum State {
-        PENDING, PAYMENT_APPROVED, READY_FOR_DELIVERY, CANCELED
+        PENDING, IN_STOCK, PAYMENT_APPROVED, READY_FOR_DELIVERY, CANCELED
     }
 }

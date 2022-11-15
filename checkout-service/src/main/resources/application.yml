@@ -1,2 +1,15 @@
+spring:
+  cloud:
+    function:
+      definition: shop-order;orderStock
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        shop-order-out-0:
+          destination: SHOP_ORDER
+        orderStock-in-0:
+          destination: SHOP_ORDER_STOCK
 server:
-  port: 8081
+  port: 8087

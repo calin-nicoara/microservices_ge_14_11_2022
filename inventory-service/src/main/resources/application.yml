@@ -5,11 +5,22 @@ spring:
     password: postgres
   application:
     name: inventory-service
-  kafka:
-    consumer:
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      group-id: INVENTORY_SERVICE_GROUP
-      client-id: ${spring.application.name}
+  cloud:
+    function:
+      definition: storeproduct
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        storeproduct-in-0:
+          destination: PRODUCT_TOPIC
+          group: INVENTORY_SERVICE_GROUP
+#  kafka:
+#    consumer:
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      group-id: INVENTORY_SERVICE_GROUP
+#      client-id: ${spring.application.name}
 server:
   port: 8082

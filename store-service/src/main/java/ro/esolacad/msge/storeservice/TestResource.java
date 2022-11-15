@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class TestResource {
 
-    @Value("${config-test}")
+    @Value("${config-test:default}")
     private String testConfig;
 
     @GetMapping

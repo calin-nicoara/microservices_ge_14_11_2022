@@ -21,6 +21,7 @@ public class ShopOrder {
     @GeneratedValue
     private Long id;
 
+    private String orderCode;
     private String clientCode;
 
     private State state;

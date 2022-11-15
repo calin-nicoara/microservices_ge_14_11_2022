@@ -11,5 +11,7 @@ spring:
           destination: SHOP_ORDER
         orderStock-in-0:
           destination: SHOP_ORDER_STOCK
+        shop-order-check-stock-out-0:
+          destination: SHOP_ORDER_CHECK_STOCK
 server:
   port: 8087

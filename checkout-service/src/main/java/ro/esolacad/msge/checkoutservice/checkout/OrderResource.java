@@ -20,4 +20,9 @@ public class OrderResource {
     public void createOrder(@RequestBody ShopOrderModel shopOrderModel) {
         orderService.createOrder(shopOrderModel);
     }
+
+    @PostMapping("/orchestration")
+    public void creatOrderWithSagaObject(@RequestBody ShopOrderModel shopOrderModel) {
+        orderService.createOrderWithSaga(shopOrderModel);
+    }
 }

@@ -15,7 +15,7 @@ services:
     depends_on:
       - postgresql
     environment:
-      KEYCLOAK_CREATE_ADMIN_USER: true
+      KEYCLOAK_CREATE_ADMIN_USER: 'true'
       KEYCLOAK_ADMIN_USER: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:

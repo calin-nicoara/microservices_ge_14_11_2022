@@ -5,7 +5,7 @@ import {TableListResolver} from '../../table-list/table-list.resolver';
 export const AdminLayoutRoutes: Routes = [
   {
     path: 'products', component: TableListComponent, data: {
-      'url': 'http://localhost:8999/store/product/',
+      'url': 'http://localhost:8999/store/products/',
       'keys': ['id', 'code', 'name', 'description']
     }, resolve: {
       list: TableListResolver

@@ -26,7 +26,11 @@ public class ProductResource {
     }
 
     @GetMapping("/{product_code}")
-    public Optional<ProductModel> getProduct(@PathVariable("product_code") String code) {
+    public Optional<ProductModel> getProduct(@PathVariable("product_code") String code
+//                                             JwtAuthenticationToken principal
+    ) {
+//        System.out.println(principal);
+
         return productService.findByProductCode(code);
     }
 

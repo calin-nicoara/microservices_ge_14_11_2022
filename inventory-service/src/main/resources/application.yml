@@ -1,4 +1,9 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost/realms/spring-boot-test
   datasource:
     url: jdbc:postgresql://localhost:5432/ge-inventory
     username: postgres

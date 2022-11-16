@@ -1,6 +1,11 @@
 server:
   port: 8999
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost/realms/spring-boot-test
   application:
     name: api-gateway
   cloud:

@@ -1,0 +1,4 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql:~/test?reWriteBatchedInserts=true;AUTO_SERVER=TRUE

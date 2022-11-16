@@ -1,6 +1,5 @@
 package ro.esolacad.msge.storeservice.product;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import ro.esolacad.msge.storeservice.product.feign.InventoryFeignClient;
@@ -8,12 +7,19 @@ import ro.esolacad.msge.storeservice.product.feign.InventoryFeignClient;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService {
 
     private final ProductRepository productRepository;
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
     private final InventoryFeignClient inventoryFeignClient;
+
+    public ProductService(ProductRepository productRepository, RestTemplate restTemplate,
+                          InventoryFeignClient inventoryFeignClient) {
+        this.productRepository = productRepository;
+        this.restTemplate = restTemplate;
+        this.inventoryFeignClient = inventoryFeignClient;
+    }
+
 
     public Optional<ProductModel> findByProductCode(final String code) {
         return productRepository.findByCode(code)

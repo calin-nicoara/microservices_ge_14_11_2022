@@ -1,9 +1,10 @@
 package ro.esolacad.msge.storeservice.product.feign;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Profile;
 import ro.esolacad.msge.storeservice.product.ProductInventoryModel;
 
-@Component
+//@Component
+@Profile("!test")
 public class InventoryFeignClientFallback implements InventoryFeignClient {
     @Override
     public ProductInventoryModel getInventory(final String productCode) {

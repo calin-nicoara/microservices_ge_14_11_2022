@@ -5,7 +5,7 @@ metadata:
   labels:
     app: demo-for-kube
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: demo-for-kube
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: demo-for-kube
-          image: demo-for-kube:v2
+          image: demo-for-kube:v3
           ports:
             - containerPort: 8080
           livenessProbe:
@@ -31,6 +31,9 @@ spec:
               port: 8080
             initialDelaySeconds: 30
             periodSeconds: 10
+          envFrom:
+            - configMapRef:
+                name: dummy-service-config-map
           resources:
             requests:
               cpu: "100m"
@@ -44,16 +47,23 @@ kind: Service
 metadata:
   name: demo-for-kube-service
 spec:
-  type: NodePort
   selector:
     app: demo-for-kube
   ports:
     - name: http
       port: 8080
       targetPort: 8080
-      nodePort: 30213
 ---
-
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dummy-service-config-map
+data:
+  TEST_1: "1"
+  TEST_2: "2"
+  SPRING_DATASOURCE_PASSWORD: postgres
+  SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/northwind?useSSL=false
+  SPRING_DATASOURCE_USERNAME: postgres
 
 
 

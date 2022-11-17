@@ -10,6 +10,7 @@ public class DemoResource {
 
     @GetMapping
     public String getTEst() {
-        return "Test";
+        String hostname = System.getenv("HOSTNAME");
+        return "Test from: " + hostname;
     }
 }

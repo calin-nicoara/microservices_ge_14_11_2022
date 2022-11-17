@@ -1,6 +1,7 @@
 package ro.esolacad.msge.storeservice.product;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.support.GenericMessage;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RequestMapping("/products")
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class ProductResource {
 
     private final ProductRepository productRepository;
@@ -30,7 +32,7 @@ public class ProductResource {
 //                                             JwtAuthenticationToken principal
     ) {
 //        System.out.println(principal);
-
+        log.info("Getting product with code: " + code);
         return productService.findByProductCode(code);
     }
 

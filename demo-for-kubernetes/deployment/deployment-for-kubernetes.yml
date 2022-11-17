@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-for-kube-deployment
+  labels:
+    app: demo-for-kube
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-for-kube
+  spec:
+    containers:
+      - name: demo-for-kube
+        image: demo-kube:v1
+        ports:
+          - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        resources:
+          request:
+            cpu: "100m"
+            memory: "600Mi"
+          limits:
+            memory: "1Gi"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-for-kube-service
+spec:
+  type: NodePort
+  selector:
+    app: demo-for-kube
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      nodePort: 30213
+---
+
+
+
+
+
+
+
+
+
+
+
+
+

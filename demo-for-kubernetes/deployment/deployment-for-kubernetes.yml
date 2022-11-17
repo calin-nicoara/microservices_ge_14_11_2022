@@ -9,30 +9,34 @@ spec:
   selector:
     matchLabels:
       app: demo-for-kube
-  spec:
-    containers:
-      - name: demo-for-kube
-        image: demo-kube:v1
-        ports:
-          - containerPort: 8080
-        livenessProbe:
-          httpGet:
-            path: /actuator/health/liveness
-            port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /actuator/health/readiness
-            port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        resources:
-          request:
-            cpu: "100m"
-            memory: "600Mi"
-          limits:
-            memory: "1Gi"
+  template:
+    metadata:
+      labels:
+        app: demo-for-kube
+    spec:
+      containers:
+        - name: demo-for-kube
+          image: demo-for-kube:v2
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "600Mi"
+            limits:
+              memory: "1Gi"
 
 ---
 apiVersion: v1
